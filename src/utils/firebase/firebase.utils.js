@@ -43,7 +43,6 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
   })
 
   await batch.commit()
-  console.log("done")
 }
 
 export const getCategoriesAndDocuments = async () => {
@@ -68,11 +67,7 @@ export const createUserDocumentFromAuth = async (
 
   const userDocRef = doc(db, "users", userAuth.uid);
 
-  console.log(userDocRef);
-
   const userSnapshot = await getDoc(userDocRef);
-  console.log(userSnapshot);
-  console.log(userSnapshot.exists());
 
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;

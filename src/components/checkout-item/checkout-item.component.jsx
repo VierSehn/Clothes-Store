@@ -13,12 +13,12 @@ import {
 
 const CheckoutItem = ({ cartItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
-  const { deleteItemFromCart, increaseCartItemCount, decreaseCartItemCount } =
+  const { addItemToCart, deleteItemFromCart, removeItemToCart } =
     useContext(CartContext);
 
+  const addCheckoutItemToCart = () => addItemToCart(cartItem);
   const deleteCheckoutItem = () => deleteItemFromCart(cartItem);
-  const increaseCheckoutItemCount = () => increaseCartItemCount(cartItem);
-  const decreaseCheckoutItemCount = () => decreaseCartItemCount(cartItem);
+  const removeCheckoutCartItem = () => removeItemToCart(cartItem);
 
   return (
     <CheckoutItemContainer>
@@ -27,9 +27,9 @@ const CheckoutItem = ({ cartItem }) => {
       </ImageContainer>
       <BaseSpan>{name}</BaseSpan>
       <Quantity>
-        <Arrow onClick={decreaseCheckoutItemCount}>&#10094;</Arrow>
+        <Arrow onClick={removeCheckoutCartItem}>&#10094;</Arrow>
         <Value>{quantity}</Value>
-        <Arrow onClick={increaseCheckoutItemCount}>&#10095;</Arrow>
+        <Arrow onClick={addCheckoutItemToCart}>&#10095;</Arrow>
       </Quantity>
       <BaseSpan>{price}$</BaseSpan>
       <RemoveButton onClick={deleteCheckoutItem}>&#10005;</RemoveButton>
