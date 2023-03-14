@@ -1,9 +1,9 @@
 import { createSelector } from "reselect"
 
-const selectCategoryItem = (state) => state.categories
+const selectCategoryReducer = (state) => state.categories
 
 export const selectCategories = createSelector (
-  [selectCategoryItem],
+  [selectCategoryReducer],
   (categoriesSlice) => categoriesSlice.categories
 )
 
